@@ -32,6 +32,16 @@ public class GlobalExceptionHandler {
 		return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage());
 	}
 
+	@ExceptionHandler(EmailUtilisateurExistantException.class)
+	public ResponseEntity<ErrorResponse> handleEmailUtilisateurExistant(EmailUtilisateurExistantException ex) {
+		return buildResponse(HttpStatus.CONFLICT, ex.getMessage());
+	}
+
+	@ExceptionHandler(AuthentificationException.class)
+	public ResponseEntity<ErrorResponse> handleAuthentification(AuthentificationException ex) {
+		return buildResponse(HttpStatus.UNAUTHORIZED, ex.getMessage());
+	}
+
 	private ResponseEntity<ErrorResponse> buildResponse(HttpStatus status, String message) {
 		return ResponseEntity.status(status).body(new ErrorResponse(status.value(), message));
 	}

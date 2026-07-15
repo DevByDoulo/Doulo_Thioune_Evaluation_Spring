@@ -34,3 +34,7 @@ build/
 
 ### Configuration locale (secrets) ###
 src/main/resources/application-dev.properties
+
+### Logs locaux ###
+app-out.log
+app-err.log
